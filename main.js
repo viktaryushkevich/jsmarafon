@@ -1,33 +1,75 @@
-function getVowels(str) {
-  var vowelsCount = 0;
+const $btn = document.getElementById('btn-kick');
+const $btnSuper = document.getElementById('btn-punch');
+const character = {
+    name: 'Pikachu',
+    defaultHP: 100,
+    damageHP: 100,
+    elHP: document.getElementById('health-character'),
+    elProgressbar: document.getElementById('progressbar-character'),
+    renderHP: renderHP,
+    renderHPLife: renderHPLife,
+    renderProgressbarHP: renderProgressbarHP,
+}
+const enemy = {
+    name: 'Charmander',
+    defaultHP: 100,
+    damageHP: 100,
+    elHP: document.getElementById('health-enemy'),
+    elProgressbar: document.getElementById('progressbar-enemy'),
+    renderHP: renderHP,
+    renderHPLife: renderHPLife,
+    renderProgressbarHP: renderProgressbarHP,
+}
+$btn.addEventListener('click', function() {
+    console.log('kick');
+    console.log(random(20));
+    changeHP(random(20), character);
+    changeHP(random(20), enemy);
+});
 
-  //turn the input into a string
-  var string = str.toString();
+function init() {
+    console.log('Start Game!');
+    renderHP(character);
+    renderHP(enemy);
+}
 
-  //loop through the string
-  for (var i = 0; i <= string.length - 1; i++) {
+function renderHP() {
+    this.renderHPLife();
+    this.renderProgressbarHP();
+}
 
-  //if a vowel, add to vowel count
-    if (string.charAt(i) == "а") {
-      vowelsCount += 1;
-    }
+function renderHPLife() {
+    this.elHP.innerText = this.damageHP + '/' + this.defaultHP;
+}
+
+function renderProgressbarHP() {
+    this.elProgressbar.style.width = this.damageHP + '%';
+}
+
+function superHit() {
+  if (character.damageHP < 50) {
+      $btnSuper.style.display = 'block';
+      $btnSuper.onclick = function () {
+          $btnSuper.disabled = true;
+      }
   }
-  return vowelsCount;
+
 }
 
-
-const firstRow = 'мама мыла раму';
-const secondRow = 'собака друга человекаааааа';
-
-function getRow(firstRow, secondRow) {
-
-
-    if (getVowels(firstRow) > getVowels(secondRow)) {
-        return firstRow
+function changeHP(count, person) {
+    if (this.damageHP < count) {
+        this.damageHP = 0;
+        alert('Бедный ' + this.name + ' проиграл бой!');
+        $btn.disabled = true;
     } else {
-        return secondRow
+        this.damageHP -= count;
     }
-    
+
+    this.renderHP();
+
 }
 
-console.log(getRow(firstRow, secondRow));
+function random(num) {
+    return Math.ceil(Math.random() * num)
+}
+init();
