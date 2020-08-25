@@ -40,8 +40,9 @@ body {
     position: relative;
     margin: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-direction: column;
 }
 
 .playground {
@@ -276,7 +277,10 @@ body {
     outline: none !important;
     cursor: pointer;
     font-size: 18px;
+}
 
+.button.second {
+    display: none;
 }
 .button:after {
     content: "";
