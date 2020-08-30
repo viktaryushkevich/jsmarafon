@@ -85,6 +85,22 @@ function params() {
     return `-${character.defaultHP - character.damageHP} ${character.damageHP}/${character.defaultHP}`;
 }
 
+function showBtnCountClick(){
+    let count = 0;
+    return function(button, defaultNumCick = 5){
+        console.log(`Кнопка ${button.id} нажата ${count} раз, и у нее осталось ${defaultNumCick-count} нажатий`);  
+        if(button.text === undefined){ button.text = button.innerText;}
+
+        button.innerText = ${button.text} [${(defaultNumCick - count)}]; 
+
+        if ( count > defaultNumCick-1){
+            button.disabled = true
+        } 
+        console.log(button);
+        count++;
+    }   
+}
+
 function generateLog(firstPerson, secondPerson) {
     const {name} = character;
     const {name: enName} = enemy;
