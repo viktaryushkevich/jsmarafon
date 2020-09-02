@@ -1,56 +1,41 @@
+import Pokemon from "./pokemon";
+
 function $getElById(id) {
     return document.getElementById(id);
 }
 
 const $btn = $getElById('btn-kick');
 const $btnSuper = $getElById('btn-punch');
-const character = {
+
+const player1 = new Pokemon ({
     name: 'Pikachu',
-    defaultHP: 100,
-    damageHP: 100,
-    elHP: $getElById('health-character'),
-    elProgressbar: $getElById('progressbar-character'),
-    renderHP: renderHP,
-    renderHPLife: renderHPLife,
-    renderProgressbarHP: renderProgressbarHP,
-}
-const enemy = {
-    name: 'Charmander',
-    defaultHP: 100,
-    damageHP: 100,
-    elHP: $getElById('health-enemy'),
-    elProgressbar: $getElById('progressbar-enemy'),
-    renderHP: renderHP,
-    renderHPLife: renderHPLife,
-    renderProgressbarHP: renderProgressbarHP,
-}
-$btn.addEventListener('click', function() {
-    console.log('kick');
-    console.log(random(20));
-    changeHP(random(20), character);
-    changeHP(random(20), enemy);
+    type: 'electric',
+    hp: 500,
+    selectors: 'character',
 });
 
-function init() {
-    console.log('Start Game!');
-    renderHP(character);
-    renderHP(enemy);
-}
+const player2 = new Pokemon ({
+    name: 'Charmander',
+    type: 'fire',
+    hp: 450,
+    selectors: 'enemy',
+});
 
-function renderHP() {
+
+renderHP = () => {
     this.renderHPLife();
     this.renderProgressbarHP();
 }
 
-function renderHPLife() {
+renderHPLife = () => {
     this.elHP.innerText = this.damageHP + '/' + this.defaultHP;
 }
 
-function renderProgressbarHP() {
+renderProgressbarHP = () => {
     this.elProgressbar.style.width = this.damageHP + '%';
 }
 
-function superHit() {
+superHit = () => {
   if (character.damageHP < 50) {
       $btnSuper.style.display = 'block';
       $btnSuper.onclick = function () {
@@ -60,25 +45,16 @@ function superHit() {
 
 }
 
-function changeHP(count) {
-    this.damageHP -= count;
-    const log = this === enemy ? generateLog(this, character) : generateLog(this, enemy);
-    console.log(log);
-    const $logs = document.querySelector('#logs');
-    if (this.damageHP < count) {
-        this.damageHP = 0;
-        alert('Бедный ' + this.name + ' проиграл бой!');
-        $btn.disabled = true;
-    } else {
-        
-    }
+$btn.addEventListener('click', function() {
+    console.log('kick');
+    console.log(random(20));
+    player1.changeHP(random(60,20));
+    player2.changeHP(random(60,20));
 
-    this.renderHP();
-
-}
-
-function random(num) {
-    return Math.ceil(Math.random() * num)
+function init() {
+    console.log('Start Game!');
+    renderHP(character);
+    renderHP(enemy);
 }
 
 function params() {
