@@ -1,7 +1,30 @@
 import Pokemon from "./pokemon";
+import { pokemons } from "./pokemons";
 
 function $getElById(id) {
     return document.getElementById(id);
+}
+
+const randomPokemon = randomPokemon ();
+const pokemonItem = pokemon.find((item) => item.name === randomPokemon);
+const player1 = new Pokemon({
+    ...pockemonItem,
+    selectors: 'player1',
+})
+const player2 = new Pokemon({
+    ...pockemonItem,
+    selectors: 'player2',
+})
+
+const $elImg1 = document.getElementById('image-player1');
+const $elImg2 = document.getElementById('image-player2');
+const imgPok = pokemonItem.img;
+
+
+
+function startGame() {
+    newButtons = document.querySelectorAll(".comtrol .button");
+    newButtons.forEacj(($item)=>($item).remove);
 }
 
 const $btn = $getElById('btn-kick');
@@ -22,28 +45,7 @@ const player2 = new Pokemon ({
 });
 
 
-renderHP = () => {
-    this.renderHPLife();
-    this.renderProgressbarHP();
-}
 
-renderHPLife = () => {
-    this.elHP.innerText = this.damageHP + '/' + this.defaultHP;
-}
-
-renderProgressbarHP = () => {
-    this.elProgressbar.style.width = this.damageHP + '%';
-}
-
-superHit = () => {
-  if (character.damageHP < 50) {
-      $btnSuper.style.display = 'block';
-      $btnSuper.onclick = function () {
-          $btnSuper.disabled = true;
-      }
-  }
-
-}
 
 $btn.addEventListener('click', function() {
     console.log('kick');

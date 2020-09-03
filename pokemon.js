@@ -39,6 +39,29 @@ class Pokemon extends Selectors {
         return Math.ceil(Math.random() * num)
     }
 
+    renderHP = () => {
+        this.renderHPLife();
+        this.renderProgressbarHP();
+    }
+    
+    renderHPLife = () => {
+        this.elHP.innerText = this.damageHP + '/' + this.defaultHP;
+    }
+    
+    renderProgressbarHP = () => {
+        this.elProgressbar.style.width = this.damageHP + '%';
+    }
+    
+    superHit = () => {
+      if (character.damageHP < 50) {
+          $btnSuper.style.display = 'block';
+          $btnSuper.onclick = function () {
+              $btnSuper.disabled = true;
+          }
+      }
+    
+    }
+
 
 
 }
