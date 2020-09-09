@@ -34,13 +34,70 @@ body {
     opacity: .4;
 }
 
+.logs-container {
+    max-width: 60vw;
+    position: absolute;
+    margin: 0 20vw;
+    display: flex;
+    justify-content: center;
+    background: white;
+    border: 2px solid #ffc55b;
+    border-radius: 10px;
+    padding: 12px 20px;
+    max-height: 400px;
+    overflow: auto;
+    z-index: 5;
+}
+
+.red {
+    color: #ab0000;
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.logger {
+    display: flex;
+    flex-direction: column;
+    min-height: 20vh;
+    padding: 5px;
+    margin: 5px;
+    width: 80vw;
+    z-index: 10;
+}
+
+.log_message {
+    text-align: justify;
+    margin: 5px;
+    font-size: smaller;
+}
+
+.action-name {
+    text-decoration: underline;
+    font-family: Verdana;
+}
+
+.attempts-count {
+    color: darkred;
+    font-size: small;
+}
+
 .control {
     width: 320px;
     height: 260px;
     position: relative;
     margin: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -277,10 +334,7 @@ body {
     outline: none !important;
     cursor: pointer;
     font-size: 18px;
-}
 
-.button.second {
-    display: none;
 }
 .button:after {
     content: "";
@@ -303,6 +357,12 @@ body {
     background: -webkit-gradient(linear, left top, left bottom, from(#ffd78e), to(#ffc55b));
     background: linear-gradient(to bottom, #ffd78e, #ffc55b);
     box-shadow: 0 0 5px 2px white, 0 0 15px #ffe9c1, 0 3px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.button:disabled:hover {
+    background: -webkit-gradient(linear, left top, left bottom, from(#bab8b8), to(#b5b4b4));
+    background: linear-gradient(to bottom, #bab8b8, #b5b4b4);
+    border: 2px solid #bcbcbc;
 }
 
 .candy {

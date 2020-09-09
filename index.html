@@ -1,4 +1,3 @@
-  
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,56 +16,59 @@
              src="./assets/Pokemon_logo.png"
              alt="Pokemon">
     </header>
-    <div class="playground">
-        <div class="pokemon player1">
-            <span class="lvl">Lv. 1</span>
+    <div class="playground" id="div-game">
+        <div class="pokemon character" id="left-frame">
+            <span class="lvl" id="level-character"></span>
 
-            <img src="http://sify4321.000webhostapp.com/pikachu.png" class="sprite">
+            <img src="" id="image-character" alt="character" class="sprite">
 
             <div class="details">
-                <h2 class="name" id="name-player1">
+                <h2 class="name" id="name-character">
                     Pikachu
                 </h2>
                 <div class="hp">
                     <div class="bar">
-                        <div class="health" id="progressbar-player1" style="width: 100%;"></div>
+                        <div class="health" id="progressbar-character" style="width: 100%;"></div>
                     </div>
-                    <span class="text" id="health-player1">100 / 100</span>
+                    <span class="text" id="health-character">100 / 100</span>
                 </div>
             </div>
         </div>
 
-        <div class="control">
-            <button class="button first" id="btn-kick">
-                Thunder Jolt
-            </button>
-            <button class="button second" id="btn-punch">
-                Thunder Shock
-            </button>
+        <div id="div-controls">
+            <div class="control" id="div-kick-character">
+            </div>
+            <div class="control" id="div-start-game">
+                <button class="button" id="btn-start-game">
+                    -- Start Game --
+                </button>
+            </div>
         </div>
 
-        <div class="pokemon player2">
-            <span class="lvl">Lv. 1</span>
+        <div class="pokemon enemy" id="right-frame">
+            <span class="lvl" id="level-enemy"></span>
 
-            <img src="http://sify4321.000webhostapp.com/charmander.png" class="sprite">
+            <img src="" id="image-enemy" alt="enemy" class="sprite">
 
             <div class="details">
-                <h2 class="name" id="name-player2">
+                <h2 class="name" id="name-enemy">
                     Charmander
                 </h2>
                 <div class="hp">
                     <div class="bar">
-                        <div class="health" id="progressbar-player2" style="width: 100%;"></div>
+                        <div class="health" id="progressbar-enemy" style="width: 100%;"></div>
                     </div>
-                    <span class="text" id="health-player2">100 / 100</span>
+                    <span class="text" id="health-enemy">100 / 100</span>
                 </div>
             </div>
         </div>
     </div>
-    <div id="logs"></div>
 </div>
-<div class="catch_screen"></div>
 
-<script src="main.js"></script>
+<div class="catch_screen"></div>
+<div class="logs-container">
+    <div id="logs" class="logger"></div>
+</div>
+<script src="main.js" type="module"></script>
 </body>
 </html>
